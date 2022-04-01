@@ -1,21 +1,15 @@
 function modal() {
   const main = document.getElementById("main");
-
   const div = document.createElement("div");
   div.classList.add("divModal");
-
   const h1 = document.createElement("h1");
   h1.innerText = "Bem vindo(a) ao Genius";
-
   const form = document.createElement("form");
-
   const input = document.createElement("input");
   input.placeholder = "Insira seu nome Aqui";
-
   const button = document.createElement("button");
   button.id = "button"; //criação da primeira Pagina com input
   button.innerText = "Enviar";
-
   main.appendChild(div);
   div.appendChild(h1);
   div.appendChild(form);
@@ -23,7 +17,6 @@ function modal() {
   form.appendChild(button);
 }
 modal();
-
 const botao = document.getElementById("button");
 botao.addEventListener("click", function (e) {
   const input = document.querySelector("input").value;
@@ -36,61 +29,48 @@ botao.addEventListener("click", function (e) {
     ApertarStart();
   }
 });
-
 function hide() {
   const div = document.querySelector(".divModal"); // função que esconde a div da primeira pagina para mostrar o tabuleiro.
   div.classList.remove("divModal");
   div.classList.add("hide");
 }
-
 function createLayout() {
   const main = document.getElementById("main");
   const valor = document.querySelector("input").value;
-
   const section = document.createElement("section");
-
   const divBlue = document.createElement("div");
   divBlue.classList.add("blue");
   divBlue.id = 0;
-
   const divYellow = document.createElement("div"); // função que cria o tabuleiro
   divYellow.classList.add("yellow");
   divYellow.id = 1;
-
   const divGreen = document.createElement("div");
   divGreen.classList.add("green");
   divGreen.id = 2;
-
   const divVermelho = document.createElement("div");
   divVermelho.classList.add("red");
   divVermelho.id = 3;
-
   const divCircle = document.createElement("div");
   divCircle.id = "circle";
-
   const p = document.createElement("p");
+  p.id = "feed";
   p.innerText = "Bem vindo(a) " + `${valor}`;
-
   const button = document.createElement("button");
   button.classList.add("button");
   button.id = "start";
   button.innerText = "START";
-
   const score = document.createElement("div");
   score.classList.add("score");
   score.innerText = `${dataGame.score}`;
-
   const divContador = document.createElement("div");
   divContador.classList.add("contadora");
   divContador.id = "contador";
-
   arrayCores.push(divBlue, divYellow, divGreen, divVermelho);
-
+  //função clickar nas divs coloridas
   for (let i = 0; i < arrayCores.length; i++) {
     arrayCores[i].addEventListener("click", () => {
       if (dataGame.podeApertar == true) {
         dataGame.sequenciaJogada.push(arrayCores[i].id);
-
         if (
           dataGame.sequenciaJogada.length ===
             dataGame.sequenciaSorteada.length &&
@@ -111,7 +91,6 @@ function createLayout() {
       }
     });
   }
-
   main.appendChild(section);
   section.appendChild(divBlue);
   section.appendChild(divYellow);
@@ -123,7 +102,6 @@ function createLayout() {
   section.appendChild(button);
   section.appendChild(divContador);
 }
-
 const dataGame = {
   jogadas: 1,
   score: 0,
@@ -132,43 +110,35 @@ const dataGame = {
   botaoAcionado: true, // objeto que armazena dados
   podeApertar: false,
 };
-
 const arrayCores = [];
-
 function randomColors() {
   for (let i = 0; i < 1; i++) {
     const numeroSorteado = Math.floor(Math.random() * 4);
     dataGame.sequenciaSorteada.push(numeroSorteado);
   }
-
   for (let j = 0; j < dataGame.sequenciaSorteada.length; j++) {
     setTimeout(() => {
       if (dataGame.sequenciaSorteada[j] === 0) {
         arrayCores[0].classList.replace("blue", "lightBlue");
       }
-
       if (dataGame.sequenciaSorteada[j] === 1) {
         arrayCores[1].classList.replace("yellow", "lightYellow"); //função que randomiza as cores
       }
-
       if (dataGame.sequenciaSorteada[j] === 2) {
         arrayCores[2].classList.replace("green", "lightGreen");
       }
-
       if (dataGame.sequenciaSorteada[j] === 3) {
         arrayCores[3].classList.replace("red", "lightRed");
       }
     }, j * 1000);
   }
 }
-
 function remove() {
   for (let j = 0; j <= dataGame.sequenciaSorteada.length; j++) {
     setTimeout(() => {
       if (dataGame.sequenciaSorteada[j] === 0) {
         arrayCores[0].classList.replace("lightBlue", "blue");
       }
-
       if (dataGame.sequenciaSorteada[j] === 1) {
         arrayCores[1].classList.replace("lightYellow", "yellow");
       }
@@ -176,7 +146,6 @@ function remove() {
       if (dataGame.sequenciaSorteada[j] === 2) {
         arrayCores[2].classList.replace("lightGreen", "green");
       }
-
       if (dataGame.sequenciaSorteada[j] === 3) {
         arrayCores[3].classList.replace("lightRed", "red");
       }
@@ -184,40 +153,39 @@ function remove() {
   }
   return (dataGame.podeApertar = true);
 }
-
 function continuarJogando() {
   const contador = document.getElementById("contador");
   const score = document.querySelector(".score");
-  score.innerText = "Score: " + dataGame.score;
-  contador.innerText = dataGame.jogadas;
-  randomColors();
-  setTimeout(() => {}, 400); //função que continua quando acerta a sequencia
-  setTimeout(remove, 500);
+  textoAcerto("Ótimo, ");
+  setTimeout(() => {
+    textoAcerto("Atenção para a proxima sequencia, ");
+  }, 1000);
+  setTimeout(randomColors, 1000);
+  //setTimeout(() => {}, 400); //função que continua quando acerta a sequencia
+  setTimeout(remove, 1500);
   dataGame.jogadas += 1;
   dataGame.score += 1000;
+  score.innerText = "Score: " + dataGame.score;
+  contador.innerText = dataGame.jogadas;
 }
-
 function ApertarStart() {
   const comecar = document.getElementById("start");
-
   comecar.addEventListener("click", () => {
+    feedBack();
     if (dataGame.botaoAcionado == true) {
       dataGame.botaoAcionado = false;
       const contador = document.getElementById("contador"); //botao start para comecar
       contador.innerText = dataGame.jogadas;
-
       randomColors();
       setTimeout(() => {}, 400);
       setTimeout(remove, 500);
-      dataGame.jogadas += 1;
+      // dataGame.jogadas += 1;
       dataGame.score += 1000;
     }
   });
 }
-
 function quadro() {
   const section = document.querySelector("section");
-
   const div = document.createElement("div");
   div.classList.add("divQuadro");
   const p1 = document.createElement("p");
@@ -229,27 +197,44 @@ function quadro() {
   const button = document.createElement("button");
   button.id = "recomecar";
   button.innerText = "Recomeçar";
-
   div.appendChild(p1);
   div.appendChild(p2);
   div.appendChild(button);
   section.appendChild(div);
-
   button.addEventListener("click", function () {
     div.classList.replace("divQuadro", "hide");
     ApertaRecomecar();
   });
 }
-
-// function ApertaRecomecar() {
-//   if (dataGame.botaoAcionado == true) {
-//     dataGame.botaoAcionado = false;
-//     const contador = document.getElementById("contador"); //botao start para recomecar
-//     contador.innerText = "";
-//     randomColors();
-//     setTimeout(() => {}, 400);
-//     setTimeout(remove, 500);
-//     dataGame.jogadas += 1;
-//     dataGame.score += 1000;
-//   }
-// }
+function ApertaRecomecar() {
+  const contador = document.getElementById("contador");
+  const score = document.querySelector(".score");
+  dataGame.sequenciaJogada = [];
+  dataGame.sequenciaSorteada = [];
+  dataGame.jogadas = 1;
+  dataGame.score = 0; //botao start para recomecar
+  retornarAoTexto();
+  contador.innerText = dataGame.jogadas;
+  score.innerText = dataGame.score;
+  randomColors();
+  setTimeout(() => {}, 400);
+  setTimeout(remove, 500);
+  //dataGame.jogadas += 1;
+  dataGame.score += 1000;
+}
+function feedBack() {
+  const valor = document.querySelector("input").value;
+  const p1 = document.getElementById("feed");
+  p1.innerText = "Atenção " + `${valor},` + " ja começou";
+}
+function retornarAoTexto() {
+  const valor = document.querySelector("input").value;
+  const p1 = document.getElementById("feed");
+  p1.innerText = "Bem vindo " + `${valor}`;
+  setTimeout(feedBack, 1000);
+}
+function textoAcerto(txt) {
+  const valor = document.querySelector("input").value;
+  const p1 = document.getElementById("feed");
+  p1.innerText = txt + `${valor}`;
+}
