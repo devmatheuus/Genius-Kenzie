@@ -1,0 +1,198 @@
+#main {
+  display: flex;
+  justify-content: center;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  width: 900px;
+  height: 743px;
+  flex-wrap: wrap;
+  position: absolute;
+}
+
+.blue {
+  height: 346px;
+  width: 397px;
+  background-color: blue;
+  border-top-left-radius: 397px;
+  border: solid 8px;
+}
+
+.blue:hover {
+  background-color: rgb(146, 146, 236);
+}
+
+.lightBlue {
+  background-color: rgb(146, 146, 236);
+  height: 346px;
+  width: 397px;
+  border-top-left-radius: 397px;
+  border: solid rgb(146, 146, 236) 8px;
+  box-shadow: 0px 5px 50px 5px rgb(177, 177, 236);
+}
+
+.yellow {
+  height: 346px;
+  width: 397px;
+  background-color: yellow;
+  border-top-right-radius: 375px;
+  margin-left: 11px;
+  border: solid 8px;
+}
+
+.yellow:hover {
+  background-color: rgb(255, 255, 182);
+}
+
+.lightYellow {
+  height: 346px;
+  width: 397px;
+  background-color: rgb(238, 238, 173);
+  border-top-right-radius: 375px;
+  margin-left: 11px;
+  border: solid rgb(238, 238, 205) 8px;
+
+  box-shadow: 0px 5px 50px 5px rgb(238, 238, 205);
+}
+
+.green {
+  height: 346px;
+  width: 397px;
+  background-color: green;
+  border-bottom-left-radius: 367px;
+  border: solid 8px;
+}
+
+.green:hover {
+  background-color: rgb(85, 218, 85);
+}
+
+.lightGreen {
+  height: 346px;
+  width: 397px;
+  background-color: rgb(85, 218, 85);
+  border-bottom-left-radius: 367px;
+  border: solid rgb(164, 232, 164) 8px;
+
+  box-shadow: 0px 5px 50px 5px rgb(164, 232, 164);
+}
+
+.red {
+  height: 346px;
+  width: 397px;
+  background-color: red;
+  border-bottom-right-radius: 372px;
+  margin-left: 11px;
+  border: solid 8px;
+}
+
+.red:hover {
+  background-color: rgb(244, 133, 133);
+}
+
+.lightRed {
+  height: 346px;
+  width: 397px;
+  background-color: rgb(244, 133, 133);
+  border-bottom-right-radius: 372px;
+  margin-left: 11px;
+  border: solid rgb(232, 173, 173) 8px;
+
+  box-shadow: 0px 5px 50px 5px rgb(232, 173, 173);
+}
+
+#circle {
+  height: 348px;
+  width: 348px;
+  background-color: rgb(235, 216, 219);
+  position: absolute;
+  margin-top: 172px;
+  border-radius: 171px;
+  border: solid 13px;
+  flex-wrap: wrap;
+}
+
+.button {
+  height: 39px;
+  width: 66px;
+  position: absolute;
+  margin-top: 455px;
+  border-radius: 14px;
+  font-family: monospace;
+}
+
+.contadora {
+  height: 73px;
+  width: 165px;
+  position: absolute;
+  margin-top: 297px;
+  background-color: rgb(34 30 31);
+  border-radius: 23px;
+  border: solid 4px red;
+  font-size: 60px;
+  color: white;
+  text-align: center;
+}
+
+.divModal {
+  background-color: pink;
+  width: 50vh;
+  height: 50vh;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  border-radius: 78px;
+}
+
+input {
+  margin-left: 56px;
+  height: 41px;
+  width: 207px;
+  border-radius: 12px;
+}
+
+button {
+  width: 100px;
+  height: 45px;
+  border-radius: 5px;
+  margin-left: 6px;
+}
+
+h1 {
+  font-family: monospace;
+  text-align: center;
+}
+
+p {
+  font-size: 25px;
+  text-align: center;
+  padding-top: 24px;
+  font-family: monospace;
+}
+
+.score {
+  position: absolute;
+  font-size: 30px;
+  margin-left: 113px;
+  padding-top: 208px;
+}
+
+.divQuadro {
+  width: 390px;
+  height: 263px;
+  background-color: pink;
+  position: absolute;
+  margin-top: 215px;
+  border-radius: 72px;
+  border: solid 7px white;
+}
+
+#recomecar {
+  position: absolute;
+  margin-left: 141px;
+}
+
+.hide {
+  display: none;
+}
