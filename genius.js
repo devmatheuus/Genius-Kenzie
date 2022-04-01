@@ -241,15 +241,15 @@ function quadro() {
   });
 }
 
-function ApertaRecomecar() {
-  if (dataGame.botaoAcionado == true) {
-    dataGame.botaoAcionado = false;
-    const contador = document.getElementById("contador"); //botao start para recomecar
-    contador.innerText = "";
-    randomColors();
-    setTimeout(() => {}, 400);
-    setTimeout(remove, 500);
-    dataGame.jogadas += 1;
-    dataGame.score += 1000;
-  }
-}
+// function ApertaRecomecar() {
+//   if (dataGame.botaoAcionado == true) {
+//     dataGame.botaoAcionado = false;
+//     const contador = document.getElementById("contador"); //botao start para recomecar
+//     contador.innerText = "";
+//     randomColors();
+//     setTimeout(() => {}, 400);
+//     setTimeout(remove, 500);
+//     dataGame.jogadas += 1;
+//     dataGame.score += 1000;
+//   }
+// }
