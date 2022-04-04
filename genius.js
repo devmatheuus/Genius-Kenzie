@@ -1,48 +1,49 @@
 function modal() {
-  
   const main = document.getElementById("main");
-  const divModal = document.createElement("div")
-  divModal.classList.add("divModal")
-  const h1 = document.createElement("h1")
-  h1.innerText = "seja bem vindo(a) ao genius,"
-  const h2 = document.createElement("h2")
-  const form = document.createElement("form")
-  const input = document.createElement("input")
-  input.id = "change"
-  input.placeholder = "Insira seu nome aqui"
-  input.maxLength = 10
-  const button = document.createElement("button")
-  button.innerText ="JOGAR!"
-  button.id = "button"
+  const divModal = document.createElement("div");
+  divModal.classList.add("divModal");
+  const h1 = document.createElement("h1");
+  h1.innerText = "seja bem vindo(a) ao genius,";
+  const h2 = document.createElement("h2");
+  const form = document.createElement("form");
+  const input = document.createElement("input");
+  input.id = "change";
+  input.placeholder = "Insira seu nome aqui";
+  input.maxLength = 10;
+  const button = document.createElement("button");
+  button.innerText = "JOGAR!";
+  button.id = "button";
 
-  form.appendChild(input)
-  form.appendChild(button)
-  divModal.appendChild(h1)
-  divModal.appendChild(h2)
-  divModal.appendChild(form)
-  main.appendChild(divModal) 
-  
-  const input2 = document.getElementById("change")
-  input2.addEventListener('input',()=>{
-    h2.innerText =  input.value
-  })
+  form.appendChild(input);
+  form.appendChild(button);
+  divModal.appendChild(h1);
+  divModal.appendChild(h2);
+  divModal.appendChild(form);
+  main.appendChild(divModal);
+
+  const input2 = document.getElementById("change");
+  input2.addEventListener("input", () => {
+    h2.innerText = input.value;
+  });
 }
 modal();
 const botao = document.getElementById("button");
 botao.addEventListener("click", function (e) {
   const input = document.querySelector("input").value;
-  input == "" ? alert("Precisa Inserir um nome") : e.preventDefault();   hide(); createLayout(); 
+  input == "" ? alert("Precisa Inserir um nome") : e.preventDefault();
+  hide();
+  createLayout();
 });
 
 botao.addEventListener("click", function ApertarStart() {
-    feedBack();
-    if (dataGame.botaoAcionado == true) {
-      dataGame.botaoAcionado = false;
-      randomColors();
-      setTimeout(() => {}, 400);
-      setTimeout(remove, 500);;
-    }
-  });
+  feedBack();
+  if (dataGame.botaoAcionado == true) {
+    dataGame.botaoAcionado = false;
+    randomColors();
+    setTimeout(() => {}, 400);
+    setTimeout(remove, 500);
+  }
+});
 function hide() {
   const div = document.querySelector(".divModal");
   div.classList.replace("divModal", "hide");
@@ -78,24 +79,23 @@ function createLayout() {
   arrayCores.push(divBlue, divYellow, divGreen, divVermelho);
   //função clickar nas divs coloridas
   for (let i in arrayCores) {
-    arrayCores[i].addEventListener("click", (e)=>{
-      const clicado = e.target.id
-      console.log(clicado)
-      if (clicado == 0){
-          const audio = new Audio ("audio/audio_simonSound1.mp3")
-          audio.play()
-      }else if (clicado == 1){
-        const audio = new Audio ("audio/audio_simonSound2.mp3")
-          audio.play()
-      }else if (clicado == 2){
-        const audio = new Audio ("audio/audio_simonSound3.mp3")
-          audio.play()
-      }else{
-        const audio = new Audio ("audio/audio_simonSound4.mp3")
-          audio.play()
+    arrayCores[i].addEventListener("click", (e) => {
+      const clicado = e.target.id;
+      console.log(clicado);
+      if (clicado == 0) {
+        const audio = new Audio("audio/audio_simonSound1.mp3");
+        audio.play();
+      } else if (clicado == 1) {
+        const audio = new Audio("audio/audio_simonSound2.mp3");
+        audio.play();
+      } else if (clicado == 2) {
+        const audio = new Audio("audio/audio_simonSound3.mp3");
+        audio.play();
+      } else {
+        const audio = new Audio("audio/audio_simonSound4.mp3");
+        audio.play();
       }
-
-    })
+    });
     arrayCores[i].addEventListener("click", () => {
       if (dataGame.podeApertar == true) {
         dataGame.sequenciaJogada.push(arrayCores[i].id);
@@ -104,7 +104,7 @@ function createLayout() {
             dataGame.sequenciaSorteada.length &&
           dataGame.sequenciaSorteada.every(
             (value, index) => value == dataGame.sequenciaJogada[index]
-          ) == true 
+          ) == true
         ) {
           dataGame.sequenciaJogada = [];
           setTimeout(continuarJogando, 1000);
@@ -146,33 +146,33 @@ function randomColors() {
     setTimeout(() => {
       switch (dataGame.sequenciaSorteada[j]) {
         case 0:
-          arrayCores[0].classList.replace("blue", "lightBlue");  
-          setTimeout(()=>{
-            const audio = new Audio ("audio/audio_simonSound1.mp3")
-            audio.play()
-          },100)
+          arrayCores[0].classList.replace("blue", "lightBlue");
+          setTimeout(() => {
+            const audio = new Audio("audio/audio_simonSound1.mp3");
+            audio.play();
+          }, 100);
           break;
         case 1:
           arrayCores[1].classList.replace("yellow", "lightYellow");
-          setTimeout(()=>{
-            const audio = new Audio ("audio/audio_simonSound1.mp3")
-            audio.play()
-          },100)
+          setTimeout(() => {
+            const audio = new Audio("audio/audio_simonSound1.mp3");
+            audio.play();
+          }, 100);
           break;
         case 2:
           arrayCores[2].classList.replace("green", "lightGreen");
-          setTimeout(()=>{
-          const audio3 = new Audio ("audio/audio_simonSound3.mp3")
-          audio3.play()
-          },100)
+          setTimeout(() => {
+            const audio3 = new Audio("audio/audio_simonSound3.mp3");
+            audio3.play();
+          }, 100);
           break;
         case 3:
           arrayCores[3].classList.replace("red", "lightRed");
-          setTimeout(()=>{
-            const audio4 = new Audio ("audio/audio_simonSound4.mp3")
-          audio4.play()
-          },100)   
-        break;
+          setTimeout(() => {
+            const audio4 = new Audio("audio/audio_simonSound4.mp3");
+            audio4.play();
+          }, 100);
+          break;
       }
     }, j * 1000);
   }
@@ -183,23 +183,23 @@ function remove() {
       switch (dataGame.sequenciaSorteada[j]) {
         case 0:
           arrayCores[0].classList.replace("lightBlue", "blue");
-        break;
+          break;
         case 1:
           arrayCores[1].classList.replace("lightYellow", "yellow");
-        break;
+          break;
         case 2:
           arrayCores[2].classList.replace("lightGreen", "green");
-        break;
+          break;
         case 3:
           arrayCores[3].classList.replace("lightRed", "red");
-        break;
+          break;
       }
     }, j * 1000);
   }
   return (dataGame.podeApertar = true);
 }
 function continuarJogando() {
-  const contador = document.getElementById("contador");  
+  const contador = document.getElementById("contador");
   const score = document.querySelector(".score");
   textoAcerto("Ótimo, ");
   setTimeout(() => {
@@ -207,7 +207,7 @@ function continuarJogando() {
   }, 1000);
   setTimeout(randomColors, 1000);
   setTimeout(remove, 1500);
-  dataGame.jogadas ++;
+  dataGame.jogadas++;
   dataGame.score += 10;
   score.innerText = "Score: " + dataGame.score;
   contador.innerText = dataGame.jogadas;
@@ -231,25 +231,24 @@ function quadro() {
   section.appendChild(div);
 
   button.addEventListener("click", function () {
-    const div = document.querySelector(".divQuadro")
-    div.classList.toggle("hide");
-  ApertaRecomecar();
+    const div = document.querySelector(".divQuadro");
+    div.classList.replace("divQuadro", "hide");
+    ApertaRecomecar();
   });
 }
-  function ApertaRecomecar() {
+function ApertaRecomecar() {
   const contador = document.getElementById("contador");
   const score = document.querySelector(".score");
   dataGame.sequenciaJogada = [];
   dataGame.sequenciaSorteada = [];
   dataGame.jogadas = 1;
-  dataGame.score = 0; 
+  dataGame.score = 0;
   retornarAoTexto();
   contador.innerText = dataGame.jogadas;
   score.innerText = dataGame.score;
   randomColors();
   setTimeout(() => {}, 400);
   setTimeout(remove, 500);
-
 }
 function feedBack() {
   const valor = document.querySelector("input").value;
@@ -263,8 +262,7 @@ function retornarAoTexto() {
   //setTimeout(feedBack, 1000);
 }
 function textoAcerto(txt) {
-  const valor = document.querySelector("input"). value;
+  const valor = document.querySelector("input").value;
   const p1 = document.getElementById("feed");
   p1.innerText = txt + `${valor}`;
 }
-
